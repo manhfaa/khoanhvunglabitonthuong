@@ -72,7 +72,19 @@ project_root/
   requirements.txt
 ```
 
-## Chuan bi du lieu
+## Dataset public da san sang train
+
+Repo public nay da kem san dataset detection theo dung layout YOLO:
+
+- `khoanhvungla/images/train`
+- `khoanhvungla/images/val`
+- `khoanhvungla/labels/train`
+- `khoanhvungla/labels/val`
+- `khoanhvungla/dataset.yaml`
+
+`configs/yolo_train.yaml` mac dinh da tro thang toi `khoanhvungla/dataset.yaml`. Vi vay tren may khac, sau khi `git clone` + setup moi truong dung, ban co the train thu cong ngay ma khong can rebuild `data/yolo`.
+
+## Chuan bi du lieu de chay lai pipeline
 
 Dat anh goc vao `data/raw` va label goc vao `data/raw_labels`.
 
@@ -86,7 +98,7 @@ thi hay copy vao:
 - `data/raw`
 - `data/raw_labels`
 
-Pipeline hien tai khong tu dong di chuyen du lieu cu de tranh ghi de ngoai y muon.
+Pipeline hien tai khong tu dong di chuyen du lieu cu de tranh ghi de ngoai y muon. Muc nay chi can khi ban muon audit, clean, dedup, synthesize va build lai dataset theo pipeline.
 
 ## Setup moi truong
 
@@ -150,7 +162,28 @@ Neu `torch.cuda.is_available()` la `False` thi dung lai o buoc chuan bi, khong d
 9. In lenh train mau
 10. Dung lai
 
-## Cac lenh CLI mau
+## Quick start tren may moi
+
+1. `git clone` repo
+2. Tao `venv`
+3. Cai PyTorch dung lenh CUDA 13.0
+4. `pip install -r requirements.txt`
+5. Kiem tra GPU
+6. Chay lenh train thu cong khi ban da san sang
+
+Lenh wrapper da tro san vao dataset public trong repo:
+
+```bash
+python src/train_yolo.py --config configs/yolo_train.yaml
+```
+
+Lenh Ultralytics CLI tuong duong:
+
+```bash
+yolo detect train data=khoanhvungla/dataset.yaml model=yolo11n imgsz=640 batch=8 epochs=100 workers=2 device=0 project=outputs/yolo name=lesion_localization
+```
+
+## Cac lenh CLI mau cho pipeline rebuild dataset
 
 ### 1. Setup moi truong
 
@@ -217,7 +250,7 @@ python src/train_yolo.py --config configs/yolo_train.yaml
 Lenh train Ultralytics CLI tham khao cho detection:
 
 ```bash
-yolo detect train data=data/yolo/dataset.yaml model=yolo11n imgsz=640 batch=8 epochs=100 workers=2 device=0 project=outputs/yolo name=lesion_localization
+yolo detect train data=khoanhvungla/dataset.yaml model=yolo11n imgsz=640 batch=8 epochs=100 workers=2 device=0 project=outputs/yolo name=lesion_localization
 ```
 
 Lenh train Ultralytics CLI tham khao cho segmentation:
@@ -387,6 +420,7 @@ Chua:
 Mac dinh:
 
 - task detect hoac segment
+- `data: khoanhvungla/dataset.yaml`
 - model nano
 - `imgsz: 640`
 - `batch: 8`
@@ -411,7 +445,8 @@ python tests/smoke_test.py
 
 - Neu label la polygon/mask, hay chay pipeline voi `--task segment`.
 - Neu label chi la bbox, dung `--task detect`.
-- `data/yolo/dataset.yaml` se duoc sinh tu dong o buoc build.
+- Public repo nay train nhanh bang `khoanhvungla/dataset.yaml`.
+- `data/yolo/dataset.yaml` se duoc sinh tu dong o buoc build khi ban muon rebuild dataset theo pipeline.
 - `train_yolo.py` chi la diem vao train de san. Project nay dung o buoc chuan bi.
 
 ## Ket luan

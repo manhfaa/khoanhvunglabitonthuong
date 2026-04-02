@@ -92,6 +92,7 @@ def choose_training_config(gpu_vram_gb: float, ram_gb: float, task: str, prefer_
 
     return {
         "task": task,
+        "data": "khoanhvungla/dataset.yaml",
         "model": model,
         "imgsz": imgsz,
         "batch": batch,

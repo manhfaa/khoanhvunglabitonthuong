@@ -1,4 +1,5 @@
 task: detect
+data: khoanhvungla/dataset.yaml
 model: yolo11n
 imgsz: 640
 batch: 8

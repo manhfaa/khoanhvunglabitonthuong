@@ -32,7 +32,7 @@ def merge_runtime_config(base_config: dict[str, Any], args: argparse.Namespace) 
         value = getattr(args, key)
         if value is not None:
             merged[key] = value
-    merged["data"] = str(args.data) if args.data is not None else base_config.get("data", "data/yolo/dataset.yaml")
+    merged["data"] = str(args.data) if args.data is not None else base_config.get("data", "khoanhvungla/dataset.yaml")
     merged["resume"] = bool(args.resume)
     return merged
 
