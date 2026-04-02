@@ -1,0 +1,19 @@
+# Install PyTorch separately with CUDA 13.0 first:
+# pip install torch==2.9.1 torchvision==0.24.1 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
+ultralytics==8.4.21
+torch==2.9.1
+torchvision==0.24.1
+torchaudio==2.9.1
+opencv-python==4.13.0.92
+albumentations==2.0.8
+numpy==2.1.3
+pandas==2.2.3
+pillow==11.1.0
+scikit-learn==1.6.1
+scikit-image==0.25.2
+imagehash==4.3.1
+pyyaml==6.0.2
+tqdm==4.67.1
+matplotlib==3.10.0
+seaborn==0.13.2
+rich==13.9.4

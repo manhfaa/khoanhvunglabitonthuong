@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs and outputs
+outputs/*
+!outputs/.gitkeep
+!outputs/logs/
+!outputs/reports/
+!outputs/quarantine/
+outputs/logs/*
+!outputs/logs/.gitkeep
+outputs/reports/*
+!outputs/reports/.gitkeep
+outputs/quarantine/*
+!outputs/quarantine/.gitkeep
+
+# Data artifacts
+khoanhvungla/
+data/raw/*
+!data/raw/.gitkeep
+data/raw_labels/*
+!data/raw_labels/.gitkeep
+data/cleaned/*
+!data/cleaned/.gitkeep
+data/deduped/*
+!data/deduped/.gitkeep
+data/synthesized/*
+!data/synthesized/.gitkeep
+data/yolo/*
+!data/yolo/.gitkeep
+!data/yolo/images/
+!data/yolo/labels/
+data/yolo/images/*
+!data/yolo/images/.gitkeep
+data/yolo/labels/*
+!data/yolo/labels/.gitkeep
+
+# OS
+Thumbs.db
+.DS_Store

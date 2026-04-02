@@ -1,0 +1,77 @@
+blur:
+  variance_of_laplacian_min: 90.0
+
+image:
+  min_width: 384
+  min_height: 384
+  max_long_edge: 1600
+  normalize_extension: ".jpg"
+  jpeg_quality: 95
+
+brightness:
+  min_mean: 35.0
+  max_mean: 225.0
+  dark_pixel_ratio_max: 0.75
+  bright_pixel_ratio_max: 0.75
+
+duplicates:
+  perceptual_hash_distance_max: 6
+  near_duplicate_resize: 256
+
+synthesis:
+  target_per_class:
+    default: 1200
+  max_multiplier: 2.0
+  max_per_parent: 2
+  methods:
+    segment_foreground_blend: true
+    bbox_focus_blend: true
+    photometric_light: true
+
+augmentation:
+  enabled: true
+  copies_per_image: 1
+  horizontal_flip:
+    enabled: true
+    p: 0.5
+  vertical_flip:
+    enabled: false
+    p: 0.1
+  rotate:
+    enabled: true
+    p: 0.25
+    limit: 10
+  shift_scale_rotate:
+    enabled: true
+    p: 0.2
+    shift_limit: 0.05
+    scale_limit: 0.08
+    rotate_limit: 8
+  random_brightness_contrast:
+    enabled: true
+    p: 0.3
+    brightness_limit: 0.15
+    contrast_limit: 0.15
+  hue_saturation_value:
+    enabled: true
+    p: 0.2
+    hue_shift_limit: 6
+    sat_shift_limit: 10
+    val_shift_limit: 8
+  blur:
+    enabled: true
+    p: 0.1
+    blur_limit: 3
+  gauss_noise:
+    enabled: true
+    p: 0.08
+    std_range:
+      - 0.01
+      - 0.03
+  clahe:
+    enabled: false
+    p: 0.08
+    clip_limit: 2.0
+    tile_grid_size:
+      - 8
+      - 8

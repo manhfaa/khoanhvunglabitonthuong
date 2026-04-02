@@ -1,0 +1,16 @@
+task: detect
+model: yolo11n
+imgsz: 640
+batch: 8
+workers: 2
+epochs: 100
+amp: true
+cache: false
+patience: 20
+pretrained: true
+device: 0
+project: outputs/yolo
+name: lesion_localization
+seed: 42
+save_period: -1
+exist_ok: true
